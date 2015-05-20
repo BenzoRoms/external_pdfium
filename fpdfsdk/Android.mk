@@ -40,4 +40,7 @@ LOCAL_SRC_FILES := \
 LOCAL_C_INCLUDES := \
     external/pdfium/core/include
 
+# For fpdfppo.cpp
+LOCAL_CFLAGS += -fno-strict-aliasing
+
 include $(BUILD_SHARED_LIBRARY)

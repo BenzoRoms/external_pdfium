@@ -378,4 +378,6 @@ LOCAL_SRC_FILES := \
 LOCAL_C_INCLUDES := \
     external/freetype/include
 
+LOCAL_CFLAGS += -fno-strict-aliasing
+
 include $(BUILD_STATIC_LIBRARY)
