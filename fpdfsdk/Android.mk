@@ -11,6 +11,11 @@ LOCAL_CFLAGS += -O3 -fstrict-aliasing -fprefetch-loop-arrays -fexceptions -Wall
 LOCAL_CPPFLAGS += -Wno-non-virtual-dtor
 LOCAL_CFLAGS += -DFOXIT_CHROME_BUILD
 
+# Mask some warnings. These are benign, but we probably want to fix them
+# upstream at some point.
+LOCAL_CFLAGS += -Wno-unused-parameter \
+                -Wno-sign-compare
+
 LOCAL_STATIC_LIBRARIES := libpdfiumcore
 
 # TODO: figure out why turning on exceptions requires manually linking libdl

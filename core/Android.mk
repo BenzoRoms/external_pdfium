@@ -10,9 +10,15 @@ LOCAL_NDK_STL_VARIANT := gnustl_static
 LOCAL_CFLAGS += -O3 -fstrict-aliasing -fprefetch-loop-arrays -fexceptions -Wall
 LOCAL_CPPFLAGS += -Wno-non-virtual-dtor
 
-# Work around gcc text relocation bug. Fixed in gcc 4.9.
-# TODO: remove this line after we've upgraded to gcc 4.9.
-LOCAL_CFLAGS_arm64 += -O2
+# Mask some warnings. These are benign, but we probably want to fix them
+# upstream at some point.
+LOCAL_CFLAGS += -Wno-unused-parameter \
+                -Wno-unused-function \
+                -Wno-sign-compare \
+                -Wno-missing-braces \
+                -Wno-missing-field-initializers \
+                -Wno-delete-non-virtual-dtor
+LOCAL_CLANG_CFLAGS += -Wno-overloaded-virtual
 
 LOCAL_CFLAGS_arm64 += -D_FX_CPU_=_FX_X64_ -fPIC
 
